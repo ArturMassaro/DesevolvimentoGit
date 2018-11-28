@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="Desevolvimento.jnlp">
+  <information>
+    <title>Desevolvimento</title>
+    <vendor>Unknown</vendor>
+    <description>Desevolvimento</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="Desevolvimento.jar" size="15260267" download="eager" />
+    <jar href="jfoenix-8.0.7.jar" size="2631271" download="eager" />
+    <jar href="sqlite-jdbc-3.23.1.jar" size="6733696" download="eager" />
+    <jar href="twilio-java-sdk-6.3.0-jar-with-dependencies.jar" size="4144847" download="eager" />
+  </resources>
+  <jfx:javafx-desc  width="600" height="400" main-class="sample.Main"  name="Desevolvimento" />
+  <update check="background"/>
+</jnlp>

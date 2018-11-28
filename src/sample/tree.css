@@ -1,0 +1,11 @@
+
+.tree-table-row-cell {
+    -fx-text-fill:rgba(255, 255, 255, 0.795);
+    -fx-background-color: #404352;
+}
+
+.tree-table-view .tree-table-row-cell .tree-table-cell{
+    -fx-text-fill: rgba(255, 255, 255, 0.795);
+    -fx-background-color: #404352;
+}
+

@@ -1,0 +1,44 @@
+/*.jfx-list-cell:selected{
+    -fx-background-color: #3d8c91
+}
+
+.jfx-list-cell {
+    -fx-background-insets:0.0;
+}
+
+.jfx-list-cell .jfx-rippler{
+    -fx-rippler-fill:BLUE;
+}
+
+.jfx-list-cell:hover{
+    -fx-background-color: #fbd79c;
+}*/
+
+.jfx-list-cell:even{
+    -fx-background-color: #333645;
+    -fx-text-fill: white; /* 5 */
+}
+.jfx-list-cell:odd{
+    -fx-background-color: #333645;
+    -fx-text-fill: white; /* 5 */
+}
+
+.list-cell:filled:selected:focused, .list-cell:filled:selected {
+    -fx-background-color: #070d1bad;/*linear-gradient(#328BDB 0%, #207BCF 25%, #1973C9 75%, #0A65BF 100%);*/
+    /*-fx-text-fill: white;*/
+    -fx-text-fill:white;
+}
+
+.list-cell:filled:hover { 
+    -fx-background-color: #22242e; /* 2 */
+    -fx-text-fill: white; /* 5 */
+}
+
+
+.jfx-list-view{
+    -fx-background-insets: 0;
+    -fx-cell-vertical-margin:10;
+    -fx-vertical-gap: 10;
+    -fx-pref-width:150;
+    -fx-text-fill: white;
+}

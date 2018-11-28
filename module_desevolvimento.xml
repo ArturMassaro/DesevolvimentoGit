@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_desevolvimento" default="compile.module.desevolvimento">
+  <dirname property="module.desevolvimento.basedir" file="${ant.file.module_desevolvimento}"/>
+  
+  <property name="module.jdk.home.desevolvimento" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.desevolvimento" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.desevolvimento" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.desevolvimento" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="desevolvimento.output.dir" value="${module.desevolvimento.basedir}/out/production/Desevolvimento"/>
+  <property name="desevolvimento.testoutput.dir" value="${module.desevolvimento.basedir}/out/test/Desevolvimento"/>
+  
+  <path id="desevolvimento.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="desevolvimento.module.production.classpath">
+    <path refid="${module.jdk.classpath.desevolvimento}"/>
+    <pathelement location="${basedir}/../Library/jfoenix-8.0.7.jar"/>
+    <pathelement location="${basedir}/../Library/sqlite-jdbc-3.23.1.jar"/>
+    <pathelement location="${basedir}/../Library/twilio-java-sdk-6.3.0-jar-with-dependencies.jar"/>
+  </path>
+  
+  <path id="desevolvimento.runtime.production.module.classpath">
+    <pathelement location="${desevolvimento.output.dir}"/>
+    <pathelement location="${basedir}/../Library/jfoenix-8.0.7.jar"/>
+    <pathelement location="${basedir}/../Library/sqlite-jdbc-3.23.1.jar"/>
+    <pathelement location="${basedir}/../Library/twilio-java-sdk-6.3.0-jar-with-dependencies.jar"/>
+  </path>
+  
+  <path id="desevolvimento.module.classpath">
+    <path refid="${module.jdk.classpath.desevolvimento}"/>
+    <pathelement location="${desevolvimento.output.dir}"/>
+    <pathelement location="${basedir}/../Library/jfoenix-8.0.7.jar"/>
+    <pathelement location="${basedir}/../Library/sqlite-jdbc-3.23.1.jar"/>
+    <pathelement location="${basedir}/../Library/twilio-java-sdk-6.3.0-jar-with-dependencies.jar"/>
+  </path>
+  
+  <path id="desevolvimento.runtime.module.classpath">
+    <pathelement location="${desevolvimento.testoutput.dir}"/>
+    <pathelement location="${desevolvimento.output.dir}"/>
+    <pathelement location="${basedir}/../Library/jfoenix-8.0.7.jar"/>
+    <pathelement location="${basedir}/../Library/sqlite-jdbc-3.23.1.jar"/>
+    <pathelement location="${basedir}/../Library/twilio-java-sdk-6.3.0-jar-with-dependencies.jar"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.desevolvimento">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.desevolvimento">
+    <patternset refid="excluded.from.module.desevolvimento"/>
+  </patternset>
+  
+  <path id="desevolvimento.module.sourcepath">
+    <dirset dir="${module.desevolvimento.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.desevolvimento" depends="compile.module.desevolvimento.production,compile.module.desevolvimento.tests" description="Compile module Desevolvimento"/>
+  
+  <target name="compile.module.desevolvimento.production" depends="register.custom.compilers" description="Compile module Desevolvimento; production classes">
+    <mkdir dir="${desevolvimento.output.dir}"/>
+    <javac2 destdir="${desevolvimento.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.desevolvimento}/javac">
+      <compilerarg line="${compiler.args.desevolvimento}"/>
+      <bootclasspath refid="desevolvimento.module.bootclasspath"/>
+      <classpath refid="desevolvimento.module.production.classpath"/>
+      <src refid="desevolvimento.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.desevolvimento"/>
+    </javac2>
+    
+    <copy todir="${desevolvimento.output.dir}">
+      <fileset dir="${module.desevolvimento.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.desevolvimento.tests" depends="register.custom.compilers,compile.module.desevolvimento.production" description="compile module Desevolvimento; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.desevolvimento" description="cleanup module">
+    <delete dir="${desevolvimento.output.dir}"/>
+    <delete dir="${desevolvimento.testoutput.dir}"/>
+  </target>
+</project>
